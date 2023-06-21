@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<body>
+<div id="value">Here:</div>
+  <script>
+    function update () {
+    fetch('http://localhost:8080/random')
+        .then(response => response.json())
+        .then(data => document.getElementById('value').textContent = data.value)
+        .catch(error => {
+          console.error('Error:', error);
+        });
+    }
+
+    (() => setInterval(() => update(), 1000))()
+  </script>
+
+</body>
+</html>
